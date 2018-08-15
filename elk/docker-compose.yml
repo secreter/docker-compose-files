@@ -12,9 +12,9 @@ services:
 
   elasticsearch:                      #默认服务名称就是域名
     image: elasticsearch
-#    hostname: elasticsearch          # 配置域名
-#    build:
-#      context: elasticsearch/
+    #    hostname: elasticsearch          # 配置域名
+    #    build:
+    #      context: elasticsearch/
     volumes:
       # :ro,只读挂载时的快照
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
@@ -28,12 +28,12 @@ services:
 
   logstash:
     image: logstash
-#    build:
-#      context: logstash/
+    #    build:
+    #      context: logstash/
     volumes:
       - ./logstash/config/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
-#      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
-#      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+    #      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+    #      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
     ports:
       - "5000:5000"
     links:
@@ -50,8 +50,8 @@ services:
 
   kibana:
     image: kibana
-#    build:
-#      context: kibana/
+    #    build:
+    #      context: kibana/
     links:
       - elasticsearch
     volumes:
