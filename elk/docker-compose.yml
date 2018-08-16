@@ -31,7 +31,10 @@ services:
     #    build:
     #      context: logstash/
     volumes:
-      - ./logstash/config/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+#      - /volumes/log_collect/:/volumes/log_collect/
+      - ./logstash/mock/mock.log:/volumes/log_collect/mock/mock.log
+      - ./logstash/config/logstash-file.conf:/usr/share/logstash/pipeline/logstash.conf
+    #      - ./logstash/config/logstash-test.conf:/usr/share/logstash/pipeline/logstash-test.conf
     #      - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
     #      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
     ports:
