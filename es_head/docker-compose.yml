@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+   elasticsearch:
+     image: elasticsearch
+     container_name: elasticsearch
+     volumes:
+       - ./elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+       - es_data:/usr/share/elasticsearch/data
+     restart: always
+     ports:
+        - "9200:9200"
+
+   es_head:
+     depends_on:
+       - elasticsearch
+     image: mobz/elasticsearch-head:5
+     ports:
+       - "9100:9100"
+     restart: always
+volumes:
+    es_data:
