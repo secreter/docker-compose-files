@@ -1,0 +1,14 @@
+version: '2'
+services:
+  redis-cluster:
+    environment:
+     IP: ${REDIS_CLUSTER_IP}
+     SENTINEL: ${REDIS_USE_SENTINEL}
+    build:
+      context: .
+      args:
+        redis_version: '4.0.11'
+    hostname: server
+    ports:
+      - '7000-7007:7000-7007'
+      - '5000-5002:5000-5002'
